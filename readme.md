@@ -18,7 +18,7 @@ Fonctionnalités
 Comment jouer
 
 1. Clonez le dépôt sur votre machine locale avec le code suivant:
-git clone https://github.com/votre-utilisateur/jeu-du-pendu.git
+git clone https://github.com/Amal-12345/Jeu-du-Pendu.git
 
 2. Ouvrez le fichier index.html dans votre navigateur.
 
