@@ -78,4 +78,34 @@ const listeMots = [
     mot: "charte",
     indice: "Doit être signé pour être accepté.",
   },
+  {
+    mot: "obstacle",
+    indice: "Barrière ou difficulté qui empêche d'avancer",
+  },
+  {
+    mot: "catastrophe",
+    indice: "Événement soudain et imprévu qui provoque une grande destruction",
+  },
+  {
+    mot: "nostalgie",
+    indice:
+      "Sentiment de tristesse et de regret pour un temps passé ou une personne disparue",
+  },
+  {
+    mot: "distributeur",
+    indice: "Permet d'obtenir de l'argent liquide avec une carte bancaire",
+  },
+  {
+    mot: "distributeur",
+    indice: "Permet d'obtenir de l'argent liquide avec une carte bancaire",
+  },
+  {
+    mot: "generosite",
+    indice: "Volonté de partager",
+  },
+  {
+    mot: "finance",
+    indice: "Activité bancaire et boursière",
+  },
 ];
+

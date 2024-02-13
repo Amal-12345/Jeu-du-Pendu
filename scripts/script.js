@@ -1,6 +1,6 @@
 class JeuDuPendu {
   #afficherMot;
-  #motADevine;
+  #motADeviner;
   #clavier;
   #imagePendu;
   #modalJeu;
@@ -11,11 +11,11 @@ class JeuDuPendu {
   #erreursMax;
   constructor() {
     this.#afficherMot = document.querySelector(".afficher-mot");
-    this.#motADevine = document.querySelector(".mot-a-deviner b");
+    this.#motADeviner = document.querySelector(".mot-a-deviner b");
     this.#clavier = document.querySelector(".clavier");
     this.#imagePendu = document.querySelector(".boite-pendu img");
     this.#modalJeu = document.querySelector(".modal-jeu");
-    this.#btnRejouer = this.#modalJeu.querySelector(".play-again");
+    this.#btnRejouer = this.#modalJeu.querySelector(".rejouer");
 
     this.#motActuel = "";
     this.#lettresCorrect = [];
@@ -33,8 +33,8 @@ class JeuDuPendu {
     return this.#afficherMot;
   }
 
-  get motADevine() {
-    return this.#motADevine;
+  get motADeviner() {
+    return this.#motADeviner;
   }
 
   get clavier() {
@@ -99,7 +99,7 @@ class JeuDuPendu {
     this.lettresCorrect = [];
     this.nbErreurs = 0;
     this.imagePendu.src = "images/pendu-0.png";
-    this.motADevine.innerText = `${this.nbErreurs} / ${this.erreursMax}`;
+    this.motADeviner.innerText = `${this.nbErreurs} / ${this.erreursMax}`;
     this.afficherMot.innerHTML = this.motActuel
       .split("")
       .map(() => `<li class="lettre"></li>`)
@@ -148,15 +148,18 @@ class JeuDuPendu {
     } else {
       this.nbErreurs++;
       this.imagePendu.src = `images/pendu-${this.nbErreurs}.png`;
+      if (this.nbErreurs === this.erreursMax) return this.gameOver(false);
     }
-
     button.disabled = true;
-    this.motADevine.innerText = `${this.nbErreurs} / ${this.erreursMax}`;
-
-    if (this.nbErreurs === this.erreursMax) return this.gameOver(false);
-    if (this.lettresCorrect.length === this.motActuel.length)
+    this.motADeviner.innerText = `${this.nbErreurs} / ${this.erreursMax}`;
+    if (
+      this.lettresCorrect.length === this.motActuel.length &&
+      this.nbErreurs < this.erreursMax
+    )
       return this.gameOver(true);
   }
 }
 
-const jeuPendu = new JeuDuPendu();
+console.log(JeuDuPendu);
+
+
