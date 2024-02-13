@@ -1,6 +1,6 @@
 class JeuDuPendu {
   #afficherMot;
-  #motADeviner;
+  #erreurs;
   #clavier;
   #imagePendu;
   #modalJeu;
@@ -11,7 +11,7 @@ class JeuDuPendu {
   #erreursMax;
   constructor() {
     this.#afficherMot = document.querySelector(".afficher-mot");
-    this.#motADeviner = document.querySelector(".mot-a-deviner b");
+    this.#erreurs = document.querySelector(".erreurs b");
     this.#clavier = document.querySelector(".clavier");
     this.#imagePendu = document.querySelector(".boite-pendu img");
     this.#modalJeu = document.querySelector(".modal-jeu");
@@ -33,8 +33,8 @@ class JeuDuPendu {
     return this.#afficherMot;
   }
 
-  get motADeviner() {
-    return this.#motADeviner;
+  get erreurs() {
+    return this.#erreurs;
   }
 
   get clavier() {
@@ -99,7 +99,7 @@ class JeuDuPendu {
     this.lettresCorrect = [];
     this.nbErreurs = 0;
     this.imagePendu.src = "images/pendu-0.png";
-    this.motADeviner.innerText = `${this.nbErreurs} / ${this.erreursMax}`;
+    this.erreurs.innerText = `${this.nbErreurs} / ${this.erreursMax}`;
     this.afficherMot.innerHTML = this.motActuel
       .split("")
       .map(() => `<li class="lettre"></li>`)
@@ -151,7 +151,7 @@ class JeuDuPendu {
       if (this.nbErreurs === this.erreursMax) return this.gameOver(false);
     }
     button.disabled = true;
-    this.motADeviner.innerText = `${this.nbErreurs} / ${this.erreursMax}`;
+    this.erreurs.innerText = `${this.nbErreurs} / ${this.erreursMax}`;
     if (
       this.lettresCorrect.length === this.motActuel.length &&
       this.nbErreurs < this.erreursMax
