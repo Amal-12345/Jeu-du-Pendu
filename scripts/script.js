@@ -160,6 +160,6 @@ class JeuDuPendu {
   }
 }
 
-console.log(JeuDuPendu);
+const jeu = new JeuDuPendu();
 
 
