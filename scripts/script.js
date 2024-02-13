@@ -10,53 +10,71 @@ class JeuDuPendu {
   #nbErreurs;
   #erreursMax;
   constructor() {
+    // Initialisation des propriétés avec des sélecteurs HTML
     this.#afficherMot = document.querySelector(".afficher-mot");
     this.#erreurs = document.querySelector(".erreurs b");
     this.#clavier = document.querySelector(".clavier");
     this.#imagePendu = document.querySelector(".boite-pendu img");
     this.#modalJeu = document.querySelector(".modal-jeu");
     this.#btnRejouer = this.#modalJeu.querySelector(".rejouer");
-
+    // Initialisation des propriétés du jeu
     this.#motActuel = "";
-    this.#lettresCorrect = [];
+    this.#lettresCorrect;
     this.#nbErreurs = 0;
     this.#erreursMax = 6;
-
+    // Initialisation des boutons du clavier et du jeu
     this.initialiserBoutons();
     this.rejouer();
     this.motAleatoire();
 
     this.#btnRejouer.addEventListener("click", () => this.motAleatoire());
   }
-
+  // Méthodes getters et setters
   get afficherMot() {
     return this.#afficherMot;
+  }
+  set afficherMot(afficherMot){
+    this.#afficherMot = afficherMot;
   }
 
   get erreurs() {
     return this.#erreurs;
   }
+  set erreurs(erreurs){
+    this.#afficherMot = erreurs;
+  }
 
   get clavier() {
     return this.#clavier;
+  }
+  set clavier(clavier){
+    this.#clavier = clavier;
   }
 
   get imagePendu() {
     return this.#imagePendu;
   }
+  set imagePendu(imagePendu){
+    this.#imagePendu = imagePendu;
+  }
 
   get modalJeu() {
     return this.#modalJeu;
+  }
+  set modalJeu(modalJeu){
+    this.#modalJeu = modalJeu;
   }
 
   get btnRejouer() {
     return this.#btnRejouer;
   }
+  set btnRejouer(btnRejouer){
+    this.#btnRejouer = btnRejouer;
+  }
 
   get motActuel() {
     return this.#motActuel;
   }
-
   set motActuel(value) {
     this.#motActuel = value;
   }
@@ -64,7 +82,6 @@ class JeuDuPendu {
   get lettresCorrect() {
     return this.#lettresCorrect;
   }
-
   set lettresCorrect(value) {
     this.#lettresCorrect = value;
   }
@@ -72,7 +89,6 @@ class JeuDuPendu {
   get nbErreurs() {
     return this.#nbErreurs;
   }
-
   set nbErreurs(value) {
     this.#nbErreurs = value;
   }
@@ -84,6 +100,7 @@ class JeuDuPendu {
     this.#erreursMax = erreursMax;
   }
 
+  // Initialisation des boutons du clavier
   initialiserBoutons() {
     for (let i = 97; i <= 122; i++) {
       const button = document.createElement("button");
@@ -95,6 +112,7 @@ class JeuDuPendu {
     }
   }
 
+  // Réinitialisation du jeu pour une nouvelle partie
   rejouer() {
     this.lettresCorrect = [];
     this.nbErreurs = 0;
@@ -110,6 +128,7 @@ class JeuDuPendu {
     this.modalJeu.classList.remove("afficher");
   }
 
+  // Sélection d'un mot aléatoire pour la nouvelle partie
   motAleatoire() {
     const { mot, indice } =
       listeMots[Math.floor(Math.random() * listeMots.length)];
@@ -118,6 +137,7 @@ class JeuDuPendu {
     this.rejouer();
   }
 
+  // Affichage du modal de fin de jeu (victoire ou défaite)
   gameOver(victoire) {
     const texteModal = victoire
       ? `Tu as trouvé le mot secret:`
@@ -134,10 +154,13 @@ class JeuDuPendu {
     this.modalJeu.classList.add("afficher");
   }
 
+  // Logique du jeu lorsqu'une lettre est choisie
   debutJeu(button, lettreChoisie) {
     if (this.motActuel.includes(lettreChoisie)) {
+      // La lettre choisie est présente dans le mot
       [...this.motActuel].forEach((lettre, index) => {
         if (lettre === lettreChoisie) {
+          // Mise à jour des lettres correctement devinées
           this.lettresCorrect.push(lettre);
           this.afficherMot.querySelectorAll("li")[index].innerText = lettre;
           this.afficherMot
@@ -146,6 +169,7 @@ class JeuDuPendu {
         }
       });
     } else {
+      // La lettre choisie n'est pas dans le mot
       this.nbErreurs++;
       this.imagePendu.src = `images/pendu-${this.nbErreurs}.png`;
       if (this.nbErreurs === this.erreursMax) return this.gameOver(false);
@@ -160,6 +184,5 @@ class JeuDuPendu {
   }
 }
 
-const jeu = new JeuDuPendu();
-
-
+// Création d'une instance de la classe JeuDuPendu
+const nouvellePartie = new JeuDuPendu();

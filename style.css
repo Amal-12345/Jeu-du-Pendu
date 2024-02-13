@@ -13,7 +13,7 @@ body {
    background: linear-gradient(
     138deg,
     rgba(1, 1, 1, 1) 21%,
-    rgba(31, 88, 118, 1) 49%,
+    rgb(31, 88, 118) 49%,
     rgba(0, 37, 61, 1) 76%
   ); 
 
@@ -28,7 +28,7 @@ body {
   align-items: flex-end;
   justify-content: space-between;
   box-shadow: 0 10px 20px #0000001a;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 .boite-pendu img {
   user-select: none;
@@ -118,7 +118,7 @@ body {
   height: 100%;
   opacity: 0;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.6);
+  background: #00000099;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,7 +128,6 @@ body {
 .modal-jeu.afficher {
   opacity: 1;
   pointer-events: auto;
-  /* transition: opacity 0.4s 0.4s ease; */
 }
 .modal-jeu .conteneur1 {
   padding: 30px;
@@ -142,7 +141,7 @@ body {
   max-width: 130px;
   margin-bottom: 20px;
 }
-.modal-jeu img[src="images/victory.gif"] {
+.modal-jeu img {
   margin-left: -10px;
 }
 .modal-jeu h4 {
@@ -154,7 +153,7 @@ body {
   font-weight: 500;
 }
 .modal-jeu p b {
-  color: #5e63ba;
+  color: #1f5876;
   font-weight: 600;
 }
 .modal-jeu button {
