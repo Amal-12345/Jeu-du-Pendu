@@ -10,17 +10,28 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-   background: linear-gradient(
+  background: linear-gradient(
     138deg,
     rgba(1, 1, 1, 1) 21%,
     rgb(31, 88, 118) 49%,
     rgba(0, 37, 61, 1) 76%
-  ); 
+  );
+}
+h1 {
+  color: #fff;
+  position: fixed;
+  top: 10px;
+}
+h3 {
+  color: #fff;
+  position: fixed;
+  top: 100px;
 
 }
 .conteneur2 {
   display: flex;
   width: 850px;
+  height: 60vh;
   gap: 70px;
   padding: 60px 40px;
   background: #fff;
